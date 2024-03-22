@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0 --disable-host-check --port 8081",
+    "start": "ng serve --host 0.0.0.0 --disable-host-check --port 8083",
     "build": "ng build",
     "build:prod": "ng build --configuration production --base-href https://rodrigokamada.github.io/angular-amazon-cognito/",
     "watch": "ng build --watch --configuration development",

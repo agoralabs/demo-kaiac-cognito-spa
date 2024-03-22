@@ -1,12 +1,12 @@
 services:
-  spang-prod:
-    image: spang:cognito_prod
-    container_name: spang_cognito_prod
+  cogspa-keycloak-prod:
+    image: keycloak:cogspa_prod
+    container_name: cogspa_keycloak_prod
     build:
       context: ./
     volumes:
       - type: bind
-        source: /kaiac/spang/tmp
+        source: /kaiac/cogspa/tmp
         target: /app/tmp/
     ports:
-        - '8081:8081'
+        - '8083:8083'
