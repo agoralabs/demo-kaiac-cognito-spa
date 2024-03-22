@@ -9,4 +9,4 @@ services:
         source: /kaiac/spang/tmp
         target: /app/tmp/
     ports:
-        - '4200:4200'
+        - '8081:8081'
