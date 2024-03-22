@@ -1,0 +1,23 @@
+#!/bin/bash
+
+GL_AWS_REGION_ECR="$TF_VAR_ENV_APP_GL_AWS_REGION_ECR"
+GL_DOCKER_REPOSITORY="$TF_VAR_ENV_APP_GL_DOCKER_REPOSITORY"
+ECR_TAG=${TF_VAR_ENV_APP_GL_NAMESPACE}_${TF_VAR_ENV_APP_GL_STAGE}
+
+WORKING_DIR=$TF_VAR_ENV_APP_BE_LOCAL_SOURCE_FOLDER
+cd $WORKING_DIR
+
+mkdir -p $WORKING_DIR/tmp
+
+#Se connecter au repo ECR
+echo "Login into ecr..."
+aws ecr get-login-password --region $GL_AWS_REGION_ECR | docker login --username AWS --password-stdin $GL_DOCKER_REPOSITORY
+
+#Stopper le container avant de supprimer les images
+docker compose -f $WORKING_DIR/docker-compose.yml down
+
+#Supprimer les anciennes images en local
+docker images -a | grep "$ECR_TAG" | awk '{ print $3 }' | xargs docker rmi -f
+
+#Lancer le container
+docker compose -f $WORKING_DIR/docker-compose.yml up -d
