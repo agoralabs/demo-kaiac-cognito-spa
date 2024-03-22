@@ -1,5 +1,5 @@
 services:
-  spa-prod:
+  spang-prod:
     image: spang:cognito_prod
     container_name: spang_cognito_prod
     build:
