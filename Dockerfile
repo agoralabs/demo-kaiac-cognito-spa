@@ -1,5 +1,5 @@
 # Choose the Image which has Node installed already
-FROM 041292242005.dkr.ecr.us-west-2.amazonaws.com/node:16
+FROM 041292242005.dkr.ecr.us-west-2.amazonaws.com/node:14.20
 
 # install simple http server for serving static content
 RUN npm install -g http-server
