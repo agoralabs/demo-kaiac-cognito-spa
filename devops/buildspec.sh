@@ -32,7 +32,10 @@ appenvsubstr devops/appspec.sh.template devops/appspec.sh
 chmod 777 devops/appspec.sh
 appenvsubstr devops/.env.template .env
 
+rm -rf src/app/config-cognito.ts
 appenvsubstr devops/config-cognito.ts.template src/app/config-cognito.ts
+
+cat src/app/config-cognito.ts
 
 appenvsubstr devops/Dockerfile.template Dockerfile
 appenvsubstr devops/docker-compose.yml.template docker-compose.yml
