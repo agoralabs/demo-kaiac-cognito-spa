@@ -1,0 +1,34 @@
+<p>Cognito SPA demo</p>
+
+<div>
+  <button id="redirectToLogin" type="button" (click)="redirectToLogin()">Redirect to login</button>
+</div>
+<div *ngIf="loginUrl">
+  <p>loginUrl: {{ loginUrl }}</p>
+</div>
+
+<div>
+  <button id="redirectToLogout" type="button" (click)="redirectToLogout()">Redirect to logout</button>
+</div>
+<div *ngIf="logoutUrl">
+  <p>logoutUrl: {{ logoutUrl }}</p>
+</div>
+
+<div>
+  <button id="showAuthInfo" type="button" (click)="showAuthInfo()">Show Auth Info</button>
+</div>
+<div *ngIf="accessToken">
+  <p>Access Token: {{ accessToken }}</p>
+</div>
+<div *ngIf="idToken">
+  <p>idToken: {{ idToken }}</p>
+</div>
+<div *ngIf="userId">
+  <p>userId: {{ userId }}</p>
+</div>
+<div *ngIf="username">
+  <p>username: {{ username }}</p>
+</div>
+<div *ngIf="email">
+  <p>email: {{ email }}</p>
+</div>

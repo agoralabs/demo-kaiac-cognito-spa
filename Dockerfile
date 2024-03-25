@@ -1,5 +1,5 @@
 # Choose the Image which has Node installed already
-FROM 041292242005.dkr.ecr.us-west-2.amazonaws.com/node:14.20
+FROM 041292242005.dkr.ecr.us-west-2.amazonaws.com/node:18
 
 # make the 'app' folder the current working directory
 WORKDIR /app
@@ -10,6 +10,6 @@ COPY . .
 # install project dependencies
 RUN npm install
 
-EXPOSE 8081
+EXPOSE 8083
 
 CMD [ "npm", "start"]

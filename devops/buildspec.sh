@@ -16,7 +16,14 @@ appenvsubstr(){
     | envsubst '$TF_VAR_ENV_APP_BE_LOCAL_SOURCE_FOLDER' \
     | envsubst '$TF_VAR_ENV_APP_GL_AWS_REGION_ECR' \
     | envsubst '$TF_VAR_ENV_APP_GL_DOCKER_REPOSITORY' \
-    | envsubst '$TF_VAR_ENV_APP_KC_URL' > $p_destination
+    | envsubst '$TF_VAR_ENV_APP_KC_URL' \
+    | envsubst '$TF_VAR_ENV_APP_GL_IDENTITY_POOL_NAME' \
+    | envsubst '$TF_VAR_ENV_APP_GL_USER_POOL_ID' \
+    | envsubst '$TF_VAR_ENV_APP_GL_USER_POOL_CLIENT_ID' \
+    | envsubst '$TF_VAR_ENV_APP_GL_OAUTH_DOMAIN' \
+    | envsubst '$TF_VAR_ENV_APP_GL_OAUTH_REDIRECT_LOGIN' \
+    | envsubst '$TF_VAR_ENV_APP_GL_OAUTH_REDIRECT_LOGOUT' \
+    | envsubst '$TF_VAR_ENV_APP_GL_AWS_REGION' > $p_destination
 }
 
 
@@ -25,9 +32,7 @@ appenvsubstr devops/appspec.sh.template devops/appspec.sh
 chmod 777 devops/appspec.sh
 appenvsubstr devops/.env.template .env
 
-appenvsubstr devops/keycloak.json.template public/keycloak.json
-appenvsubstr devops/config.js.template config/config.js
-appenvsubstr devops/realm-import.json.template config/realm-import.json
+appenvsubstr devops/config-cognito.ts.template src/app/config-cognito.ts
 
 appenvsubstr devops/Dockerfile.template Dockerfile
 appenvsubstr devops/docker-compose.yml.template docker-compose.yml
