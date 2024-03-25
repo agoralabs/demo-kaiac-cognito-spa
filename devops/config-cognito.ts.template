@@ -1,15 +1,15 @@
 //
 
 export const cognitoConfig = {
-    identityPoolId: 'keycloak-identity-pool',
-    region: 'us-west-2',
-    userPoolId: 'us-west-2_mL3CQcBPf',
-    userPoolWebClientId: '57d2thdumfcj30o721s9fkl4oc',
+    identityPoolId: '${TF_VAR_ENV_APP_GL_IDENTITY_POOL_NAME}',
+    region: '${TF_VAR_ENV_APP_GL_AWS_REGION}',
+    userPoolId: '${TF_VAR_ENV_APP_GL_USER_POOL_ID}',
+    userPoolWebClientId: '${TF_VAR_ENV_APP_GL_USER_POOL_CLIENT_ID}',
     oauth: {
-      domain: 'kaiac.auth.us-west-2.amazoncognito.com',
+      domain: '${TF_VAR_ENV_APP_GL_OAUTH_DOMAIN}',
       scope: ['email', 'openid', 'profile'],
-      redirectSignIn: 'http://localhost:4200/login',
-      redirectSignOut: 'http://localhost:4200/login',
+      redirectSignIn: '${TF_VAR_ENV_APP_GL_OAUTH_REDIRECT_LOGIN}',
+      redirectSignOut: '${TF_VAR_ENV_APP_GL_OAUTH_REDIRECT_LOGOUT}',
       responseType: 'token',
       options: {
           AdvancedSecurityDataCollectionFlag: true
