@@ -33,13 +33,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [
-              {
-                "input": "src/environments/environment.ts",
-                "bundleName": "environment",
-                "inject": true
-              }
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
