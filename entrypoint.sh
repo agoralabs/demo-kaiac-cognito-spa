@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 # Fonction pour remplacer les variables d'environnement dans un fichier
@@ -23,7 +23,7 @@ replace_env_vars() {
 
 # Remplacer les variables dans les fichiers de template
 replace_env_vars /app/.env /app/devops/.env.template
-replace_env_vars /app/config-cognito.ts /app/devops/config-cognito.ts.template
+replace_env_vars /app/src/app/config-cognito.ts /app/devops/config-cognito.ts.template
 
 # Lancer l'application
 npm run start
