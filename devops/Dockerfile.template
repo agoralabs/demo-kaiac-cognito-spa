@@ -7,13 +7,9 @@ WORKDIR /app
 # copy project files and folders to the current working directory (i.e. 'app' folder)
 COPY . .
 
-RUN envsubst < /app/devops/.env.template > /app/.env
-
-RUN envsubst < /app/devops/config-cognito.ts.template > /app/config-cognito.ts
-
 # install project dependencies
 RUN npm install
 
 EXPOSE ${TF_VAR_ENV_APP_BE_LOCAL_PORT}
 
-CMD [ "npm", "start"]
+ENTRYPOINT ["/app/entrypoint.sh"]
