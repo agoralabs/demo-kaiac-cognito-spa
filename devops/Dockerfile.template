@@ -12,10 +12,11 @@ RUN ls -la
 RUN cat /app/entrypoint.sh
 RUN cat /app/.env
 RUN cat /app/devops/.env.template
-RUN cat /app/config-cognito.ts
+RUN cat /app/src/app/config-cognito.ts
 RUN cat /app/devops/config-cognito.ts.template
-
+RUN cat /app/Dockerfile
 # install project dependencies
+
 RUN npm install
 
 EXPOSE ${TF_VAR_ENV_APP_BE_LOCAL_PORT}
