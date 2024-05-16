@@ -10,6 +10,10 @@ COPY . .
 RUN ls -la
 
 RUN cat /app/entrypoint.sh
+RUN cat /app/.env
+RUN cat /app/devops/.env.template
+RUN cat /app/config-cognito.ts
+RUN cat /app/devops/config-cognito.ts.template
 
 # install project dependencies
 RUN npm install
