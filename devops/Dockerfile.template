@@ -9,6 +9,7 @@ COPY . .
 
 RUN ls -la
 
+RUN chmod +x /app/entrypoint.sh
 RUN cat /app/entrypoint.sh
 RUN cat /app/.env
 RUN cat /app/devops/.env.template
