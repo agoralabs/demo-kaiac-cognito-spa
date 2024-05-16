@@ -12,8 +12,10 @@ replace_env_vars() {
   # Remplace chaque variable d'environnement trouvée dans le template
   while IFS= read -r line || [ -n "$line" ]; do
     while echo "$line" | grep -q '${'; do
-      var=$(echo "$line" | sed 's/.*\${\([^}]*\)}.*/\1/')
-      line=$(echo "$line" | sed "s/\${$var}/$(eval echo \$$var)/g")
+      var=$(echo "$line" | sed 's/.*${\([^}]*\)}.*/\1/')
+      value=$(eval echo \$$var)
+      value=$(printf '%s\n' "$value" | sed 's/[\/&]/\\&/g')
+      line=$(echo "$line" | sed "s/\${$var}/$value/g")
     done
     echo "$line" >> "$temp_file"
   done < "$template_file"
