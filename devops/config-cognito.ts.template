@@ -1,14 +1,15 @@
 //
+
 export const cognitoConfig = {
-    identityPoolId: process.env["GL_IDENTITY_POOL_NAME"],
-    region: process.env["GL_AWS_REGION"],
-    userPoolId: process.env["GL_USER_POOL_ID"],
-    userPoolWebClientId: process.env["GL_USER_POOL_CLIENT_ID"],
+    identityPoolId: "${ENV_APP_GL_IDENTITY_POOL_NAME}",
+    region: "${ENV_APP_GL_AWS_REGION}",
+    userPoolId: "${ENV_APP_GL_USER_POOL_ID}",
+    userPoolWebClientId: "${ENV_APP_GL_USER_POOL_CLIENT_ID}",
     oauth: {
-      domain: process.env["GL_OAUTH_DOMAIN"],
+      domain: "${ENV_APP_GL_OAUTH_DOMAIN}",
       scope: ['email', 'openid', 'profile'],
-      redirectSignIn:process.env["GL_OAUTH_REDIRECT_LOGIN"],
-      redirectSignOut: process.env["GL_OAUTH_REDIRECT_LOGOUT"],
+      redirectSignIn: "${ENV_APP_GL_OAUTH_REDIRECT_LOGIN}",
+      redirectSignOut: "${ENV_APP_GL_OAUTH_REDIRECT_LOGOUT}",
       responseType: 'token',
       options: {
           AdvancedSecurityDataCollectionFlag: true
