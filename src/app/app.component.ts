@@ -54,17 +54,6 @@ export class AppComponent {
     this.fetchAuthInfoFromURL();
   }
 
-  private fetchApiCallResponseFromURL(): void {
-
-    this.httpClient.get(this.apiUrl == undefined ? "" : this.apiUrl)
-    .subscribe(apiCallResponse => {
-
-        this.apiCallResponse = apiCallResponse;
-
-    });
-
-  }
-
   // Méthode pour extraire le jeton d'accès de l'URL
   private fetchAuthInfoFromURL(): void {
     const params = new URLSearchParams(window.location.hash.substring(1));
