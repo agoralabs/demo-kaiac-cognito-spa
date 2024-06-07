@@ -14,9 +14,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getData(token: string): Observable<any> {
-    const headers = new HttpHeaders()
-      .set('Authorization', `Bearer ${token}`)
-      .set('Access-Control-Allow-Origin', '*');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<any>(this.apiUrl+"employee/v1/", { headers });
   }
 }
