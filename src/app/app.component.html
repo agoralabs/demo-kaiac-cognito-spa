@@ -37,8 +37,8 @@
   <button id="showApiCallResponse" type="button" (click)="showApiCallResponse()">Show API Call Response</button>
 </div>
 <div *ngIf="apiCallResponse">
-  <p>API Call Response : {{ apiCallResponse }}</p>
+  <pre>API Call Response : {{ apiCallResponse | json }}</pre>
 </div>
 <div *ngIf="apiCallErrorResponse" style="color:red;">
-  <p>API Call Response : {{ apiCallErrorResponse }}</p>
+  <pre>API Call Response : {{ apiCallErrorResponse }}</pre>
 </div>
