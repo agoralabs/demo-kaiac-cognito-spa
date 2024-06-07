@@ -39,16 +39,20 @@ export class AppComponent {
 
   showApiCallResponse() {
     this.fetchAuthInfoFromURL();
-    this.apiService.getData(this.accessToken).subscribe(
-      (response) => {
-        this.apiCallResponse = response;
-        this.apiCallErrorResponse = '';
-      },
-      (error) => {
-        this.apiCallErrorResponse = 'Erreur lors de la récupération des données';
-        console.error(error);
-      }
-    );
+    if (this.accessToken) {
+      this.apiService.getData(this.accessToken).subscribe(
+        (response) => {
+          this.apiCallResponse = response;
+          this.apiCallErrorResponse = '';
+        },
+        (error) => {
+          this.apiCallErrorResponse = 'Erreur lors de la récupération des données';
+          console.error(error);
+        }
+      );
+    }else{
+      this.apiCallErrorResponse = 'Veuillez récupérer un token';
+    }
   }
 
   showAuthInfo() {
