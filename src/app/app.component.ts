@@ -21,7 +21,7 @@ export class AppComponent {
   logoutUrl: string | null = null;
   // Méthode pour afficher le jeton d'accès
   apiCallResponse: any | null = null;
-  apiUrl: string | undefined;
+  apiCallErrorResponse: any | null = null;
 
   constructor(private httpClient: HttpClient){
     const domain = cognitoConfig.oauth.domain;
@@ -34,11 +34,20 @@ export class AppComponent {
     const beUrl = cognitoConfig.apiUrl;
     this.loginUrl = loginUrl;
     this.logoutUrl = logoutUrl;
-    this.apiUrl = beUrl+"employee/v1/";
+    
   }
 
   showApiCallResponse() {
-    this.fetchApiCallResponseFromURL();
+    this.apiService.getData().subscribe(
+      (response) => {
+        this.apiCallResponse = response;
+        this.error = '';
+      },
+      (error) => {
+        this.apiCallErrorResponse = 'Erreur lors de la récupération des données';
+        console.error(error);
+      }
+    );
   }
 
   showAuthInfo() {
