@@ -15,5 +15,5 @@ export const cognitoConfig = {
           AdvancedSecurityDataCollectionFlag: true
       }
     },
-    apiUrl: process.env["GL_BE_URL"]
+    apiUrl: "${ENV_APP_BE_URL}"
 }
