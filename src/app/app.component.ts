@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { cognitoConfig } from './config-cognito';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,10 @@ export class AppComponent {
   //logoutUrl
   logoutUrl: string | null = null;
   // Méthode pour afficher le jeton d'accès
-  constructor(){
+  apiCallResponse: any | null = null;
+  apiUrl: string | undefined;
+
+  constructor(private httpClient: HttpClient){
     const domain = cognitoConfig.oauth.domain;
     const redirectSignIn = cognitoConfig.oauth.redirectSignIn;
     const responseType = cognitoConfig.oauth.responseType;
@@ -27,12 +31,29 @@ export class AppComponent {
     const loginUrl = 'https://' + domain + '/login?redirect_uri=' + redirectSignIn + '&response_type=' + responseType + '&client_id=' + clientId;
     //const logoutUrl = 'https://' + domain + '/logout?redirect_uri=' + redirectSignIn + '&response_type=' + responseType + '&client_id=' + clientId;
     const logoutUrl = 'https://' + domain + '/logout?logout_uri=' + redirectSignIn+ '&redirect_uri=' + redirectSignIn + '&response_type=' + responseType + '&client_id=' + clientId;
+    const beUrl = cognitoConfig.apiUrl;
     this.loginUrl = loginUrl;
     this.logoutUrl = logoutUrl;
+    this.apiUrl = beUrl+"employee/v1/";
+  }
+
+  showApiCallResponse() {
+    this.fetchApiCallResponseFromURL();
   }
 
   showAuthInfo() {
     this.fetchAuthInfoFromURL();
+  }
+
+  private fetchApiCallResponseFromURL(): void {
+
+    this.httpClient.get(this.apiUrl == undefined ? "" : this.apiUrl)
+    .subscribe(apiCallResponse => {
+
+        this.apiCallResponse = apiCallResponse;
+
+    });
+
   }
 
   // Méthode pour extraire le jeton d'accès de l'URL

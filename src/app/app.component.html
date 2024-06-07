@@ -32,3 +32,10 @@
 <div *ngIf="email">
   <p>email: {{ email }}</p>
 </div>
+
+<div>
+  <button id="showApiCallResponse" type="button" (click)="showApiCallResponse()">Show API Call Response</button>
+</div>
+<div *ngIf="apiCallResponse">
+  <p>API Call Response: {{ apiCallResponse }}</p>
+</div>

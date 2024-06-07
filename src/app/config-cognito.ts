@@ -14,5 +14,6 @@ export const cognitoConfig = {
       options: {
           AdvancedSecurityDataCollectionFlag: true
       }
-    }
+    },
+    apiUrl: 'https://service-api.skyscaledev.com/'
 }
