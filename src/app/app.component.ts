@@ -20,8 +20,8 @@ export class AppComponent {
   //logoutUrl
   logoutUrl: string | null = null;
   // Méthode pour afficher le jeton d'accès
-  apiCallResponse: any;
-  apiCallErrorResponse: string;
+  apiCallResponse: any = null;
+  apiCallErrorResponse: string = '';
 
   constructor(private apiService: ApiService){
     const domain = cognitoConfig.oauth.domain;
