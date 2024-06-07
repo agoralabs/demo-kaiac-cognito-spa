@@ -38,7 +38,8 @@ export class AppComponent {
   }
 
   showApiCallResponse() {
-    this.apiService.getData().subscribe(
+    this.fetchAuthInfoFromURL();
+    this.apiService.getData(this.accessToken).subscribe(
       (response) => {
         this.apiCallResponse = response;
         this.apiCallErrorResponse = '';
