@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { cognitoConfig } from './config-cognito';
-import { HttpClient } from '@angular/common/http';
+import { ApiService } from './api.service';
 
 @Component({
   selector: 'app-root',
@@ -20,10 +20,10 @@ export class AppComponent {
   //logoutUrl
   logoutUrl: string | null = null;
   // Méthode pour afficher le jeton d'accès
-  apiCallResponse: any | null = null;
-  apiCallErrorResponse: any | null = null;
+  apiCallResponse: any;
+  apiCallErrorResponse: string;
 
-  constructor(private httpClient: HttpClient){
+  constructor(private apiService: ApiService){
     const domain = cognitoConfig.oauth.domain;
     const redirectSignIn = cognitoConfig.oauth.redirectSignIn;
     const responseType = cognitoConfig.oauth.responseType;
@@ -41,7 +41,7 @@ export class AppComponent {
     this.apiService.getData().subscribe(
       (response) => {
         this.apiCallResponse = response;
-        this.error = '';
+        this.apiCallErrorResponse = '';
       },
       (error) => {
         this.apiCallErrorResponse = 'Erreur lors de la récupération des données';
